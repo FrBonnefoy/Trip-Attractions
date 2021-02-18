@@ -13,7 +13,7 @@ def getter(z):
     time.sleep(random.uniform(0.5,1))
     timestamp=str(int(time.time()))
     sp.browser.save_screenshot(timestamp+'.png')
-    element=sp.browser.find_element_by_css_selector("a.ui_button.nav.next.primary")
+    element=sp.browser.find_element_by_xpath("/html/body/div[2]/div[2]/div[1]/div[3]/div/div/div[1]/div[2]/div/div[38]/div/a")
     sp.browser.execute_script("arguments[0].scrollIntoView();", element)
     content=sp.browser.page_source
     sopa=sp.soup(content,'html.parser')
@@ -31,11 +31,12 @@ def getter(z):
             sp.browser.save_screenshot(timestamp+'.png')
             content=sp.browser.page_source
             sopa=sp.soup(content,'html.parser')
-            element=sp.browser.find_element_by_css_selector("a.ui_button.nav.next.primary")
+            element=sp.browser.find_element_by_xpath("/html/body/div[2]/div[2]/div[1]/div[3]/div/div/div[1]/div[2]/div/div[38]/div/a")
             scrape=sopa.findAll('a',{'class':'_1QKQOve4'})
             with open('tripurl_attr.txt','a') as f:
                 for a in scrape:
                     print('https://www.tripadvisor.fr'+a['href'],file=f)
+            sp.browser.execute_script("arguments[0].scrollIntoView();", element)
             element.click()
         except:
             break
