@@ -14,6 +14,7 @@ def getter(z):
     timestamp=str(int(time.time()))
     sp.browser.save_screenshot(timestamp+'.png')
     element=sp.browser.find_element_by_css_selector("a.ui_button.nav.next.primary")
+    sp.browser.execute_script("arguments[0].scrollIntoView();", element)
     content=sp.browser.page_source
     sopa=sp.soup(content,'html.parser')
     scrape=sopa.findAll('a',{'class':'_1QKQOve4'})
