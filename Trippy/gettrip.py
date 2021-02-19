@@ -3,7 +3,7 @@ import time
 import random
 def getter(z):
 
-    sp.open_session_firefox()
+    sp.open_session()
     sp.change(z)
     time.sleep(random.uniform(1,1.5))
     #browser.save_screenshot('test'+urls.index(z)+'.png')
